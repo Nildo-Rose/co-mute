@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-info border-bottom box-shadow mb-3">
+    <div class="container">
+
+        <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+            <ul class="navbar-nav flex-grow-1">
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-controller="dashboard" asp-action="profile">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-controller="carpool" asp-action="Index">Car-Pool</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-controller="carpool" asp-action="JoinOpportunity">Car-Pool_Joined_Opportunities</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<hr />
+

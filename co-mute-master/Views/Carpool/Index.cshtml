@@ -1,0 +1,95 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-info border-bottom box-shadow mb-3">
+    <div class="container">
+
+        <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+            <ul class="navbar-nav flex-grow-1">
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-controller="dashboard" asp-action="profile">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-controller="carpool" asp-action="Index">Car-Pool</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-controller="carpool" asp-action="JoinOpportunity">Car-Pool_Joined_Opportunities</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<hr />
+@if (ViewBag.Msg != null)
+{
+    <div class="alert alert-danger alert-dismissable">@ViewBag.Msg</div>
+}
+@if (ViewBag.Success != null)
+{
+    <div class="alert alert-success alert-dismissable">@ViewBag.Success</div>
+
+}
+
+
+<div class="container row p-0 m-0">
+    <div class="col-6">
+        <h2 class="text-info">Car-pool Opportunity</h2>&nbsp;
+        <a asp-controller="carpool" asp-action="add" class="btn btn-primary">Create Carpool Opportunity</a>
+    </div>
+    <div class="col-6">
+
+    </div>
+
+
+
+    <div class="col-12 border p-2">
+        <form method="get">
+            <p>
+
+                <select @*asp-for="MovieGenre" asp-items="Model.Genres"*@>
+                    <option value="">All</option>
+                </select>
+
+                Title: <input @*type="text" asp-for="SearchString*@ />
+                <input type="submit" value="Filter" />
+            </p>
+        </form>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Car Opportunities</th>
+
+
+
+                </tr>
+            </thead>
+            @foreach (var item in ViewBag.CarpoolOpportunity)
+            {
+                <tr>
+                    <td>
+                        @item.Destination <br /><h6 class="text-sm-left">
+                            @item.Departure &ndash; &ndash;
+                            @item.ExpectedArrialTime
+                        </h6>
+                    </td>
+
+                    <td>
+                        <a asp-controller="carpool" asp-action="details"
+                           asp-route-id="@item.Id"
+                           class="btn btn-success btn-sm text-white">View Opportunity</a> @*<span>|</span>
+                            <a asp-controller="dashboard" asp-action="deleteprofile"
+                               asp-route-id="@item.Id"
+                               class="btn btn-danger btn-sm"
+                               onclick="return confirm('You are about to delete your profile! Are you sure?')">Delete</a>*@
+                    </td>
+
+                </tr>
+
+            }
+        </table>
+    </div>
+</div>
+

@@ -1,0 +1,92 @@
+﻿
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model co_mute_master.Models.JoinLeaveOpp
+
+<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-info border-bottom box-shadow mb-3">
+    <div class="container">
+
+        <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+            <ul class="navbar-nav flex-grow-1">
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-controller="dashboard" asp-action="profile">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-controller="carpool" asp-action="Index">Car-Pool</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-controller="carpool" asp-action="JoinOpportunity">Car-Pool_Joined_Opportunities</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<hr />
+@if (TempData["error"] != null)
+{
+    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+        <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+            <div class="alert alert-danger alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h4><i class="icon fa fa-ban"></i>Failed</h4>
+                You can only join this car-pool opportunity once.
+            </div>
+        </div>
+    </div>
+}
+<section class="content">
+
+    <div class="box">
+        <div class="box-body" style="display: block;">
+            <h1 class="text-info"><strong>Car-pool Opportunity Details</strong></h1><br />
+            <strong>ExpectedArrialTime: &ndash;</strong>       @ViewBag.CarpoolDetails.ExpectedArrialTime <br />
+            <strong>Departure:</strong> &ndash;  @ViewBag.CarpoolDetails.Departure<br />
+            <strong>Origins:</strong>  &ndash;   @ViewBag.CarpoolDetails.Origins<br />
+            <strong>Destination:</strong>  &ndash;  @ViewBag.CarpoolDetails.Destination<br />
+            <strong>AvailableSeats:</strong>   &ndash; @ViewBag.CarpoolDetails.AvailableSeats<br />
+            <strong>Owner:</strong>&ndash;    @ViewBag.CarpoolDetails.Owner<br />
+            <strong>Notes:</strong> &ndash;   @ViewBag.CarpoolDetails.Notes<br /><br />
+
+            @*<h5 class="text-info"> You have:&ndash;@(ViewBag.CarpoolDetails.JoinOrLeave == true ? "Joined this car-pool opportunity" : "Not Joined this car-pool opportunity")</h5>*@
+
+
+
+        </div>
+
+
+        <div class="box-footer" style="display: block;">
+            <div class="row no-print">
+                <div class="col-xs-12">
+                    <a asp-controller="carpool" asp-action="index" class="btn btn-primary pull-right"> Back</a>  &ndash;
+
+                    <form method="post" asp-controller="carpool" asp-action="processjoin">
+                        <button type ="submit" class="btn btn-primary pull-right"> Join this Opportunity</button>
+                        <input type="hidden" name="id" value="@ViewBag.CarpoolDetails.Id" />
+                    </form>
+                    @*@if (ViewBag.CarpoolDetails.JoinLeave.JoinLeave == null)
+                        {
+                            <form method="post" asp-controller="carpool" asp-action="processjoin">
+                                <button class="btn btn-primary pull-right"> Join this Opportunity</button>
+                                <input type="hidden" name="id" value="@ViewBag.CarpoolDetails.Id" />
+                            </form>
+                        }
+                        else
+                        {
+
+                            <form method="post" asp-controller="carpool" asp-action="processleave">
+                                <button class="btn btn-primary pull-right">Leave this Opportunity</button>
+                                <input type="hidden" name="id" value="@ViewBag.CarpoolDetails.Id" />
+                            </form>
+                        }*@
+
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>

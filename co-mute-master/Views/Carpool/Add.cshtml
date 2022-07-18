@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model co_mute_master.Models.CarPool
+
+<h1>Create Car-pool Opportunity</h1>
+<hr />
+
+@if (TempData["error"] != null)
+{
+    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+        <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+            <div class="alert alert-danger alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h4><i class="icon fa fa-ban"></i>Failed</h4>
+                Adding Car-pool Opportunity Failed!
+            </div>
+        </div>
+    </div>
+}
+<div class="row align-items-center justify-content-center">
+    <div class="col-md-4">
+        <form method="post" asp-controller="carpool" asp-action="add">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group ">
+                <label asp-for="ExpectedArrialTime" class="control-label"></label>
+                <input type="time" asp-for="ExpectedArrialTime" class="form-control" />
+                <span asp-validation-for="ExpectedArrialTime" class="text-danger"></span>
+            </div>
+            <div class="form-group ">
+                <label asp-for="Departure" class="control-label"></label>
+                <input type="time" asp-for="Departure" class="form-control" />
+                <span asp-validation-for="Departure" class="text-danger"></span>
+            </div>
+            <div class="form-group ">
+                <label asp-for="Origins" class="control-label"></label>
+                <input type="text" asp-for="Origins" class="form-control" />
+                <span asp-validation-for="Origins" class="text-danger"></span>
+            </div>
+            <div class="form-group ">
+                <label asp-for="Destination" class="control-label"></label>
+                <input type="text" asp-for="Destination" class="form-control" />
+                <span asp-validation-for="Destination" class="text-danger"></span>
+            </div>
+            <div class="form-group ">
+                <label asp-for="AvailableSeats" class="control-label"></label>
+                <input type="text" asp-for="AvailableSeats" class="form-control" />
+                <span asp-validation-for="AvailableSeats" class="text-danger"></span>
+            </div>
+            <div class="form-group ">
+                <label asp-for="Owner" class="control-label"></label>
+                <input type="text" asp-for="Owner" class="form-control" />
+                <span asp-validation-for="Owner" class="text-danger"></span>
+            </div>
+            <div class="form-group ">
+                <label asp-for="Notes" class="control-label"></label>
+                <input type="text" asp-for="Notes" class="form-control" />
+                <span asp-validation-for="Notes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <input type="hidden" asp-for="Id" />
+            </div>
+        </form>
+    </div>
+
+</div>
+
